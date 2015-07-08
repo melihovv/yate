@@ -1,0 +1,39 @@
+{
+  "name": "yate",
+  "version": "1.0.0",
+  "description": "Yet Another Template Engine",
+  "main": "app/yate.js",
+  "scripts": {
+    "test": "bash ./test.sh",
+    "test2": "npm run lint && npm run cover-cobertura && npm run diff-cover",
+    "lint": "jshint . && jscs -c .jscs.js .",
+    "unit-test": "mocha",
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
+    "cover-cobertura": "istanbul cover --report cobertura node_modules/mocha/bin/_mocha -- -R spec",
+    "diff-cover": "diff-cover coverage/cobertura-coverage.xml --fail-under=90",
+    "start": "node app/index.js",
+    "jsdoc": " jsdoc -d ./docs/ -r ./app/",
+    "complexity": "plato -r -d metrics -l .jshintrc -t \"Site Scrapper\" app &&  cr -c .complexrc app/"
+  },
+  "pre-commit": [
+    "test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/melihovv/yate.git"
+  },
+  "keywords": [
+    "template",
+    "engine"
+  ],
+  "author": "Alexander Melihov <amelihovv@ya.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melihovv/yate/issues"
+  },
+  "homepage": "https://github.com/melihovv/yate",
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "must": "^0.12.0"
+  }
+}

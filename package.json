@@ -26,7 +26,11 @@
     "template",
     "engine"
   ],
-  "author": "Alexander Melihov <amelihovv@ya.ru>",
+  "author": {
+    "name": "Alexander Melihov",
+    "email": "amelihovv@ya.ru",
+    "url": "https://github.com/melihovv"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/melihovv/yate/issues"

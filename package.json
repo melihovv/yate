@@ -1,6 +1,6 @@
 {
   "name": "yate",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Yet Another Template Engine",
   "main": "app/yate.js",
   "scripts": {

@@ -33,6 +33,9 @@
   },
   "homepage": "https://github.com/melihovv/yate",
   "devDependencies": {
+    "istanbul": "^0.3.17",
+    "jscs": "^1.13.1",
+    "jshint": "^2.8.0",
     "mocha": "^2.2.5",
     "must": "^0.12.0"
   }

@@ -17,15 +17,15 @@ Now node.js is only supported
 var yate = require('yate');
 
 var template =
-    `{{peopleCount = 10}} +
-    {{#if peopleCount}} +
-        Expected people count: {{peopleCount}} +
-        
-        Real people:
-        {{#each people}} +
-            {{+name}}
-        {{/each}}
-    {{/if}}`;
+    '{{@peopleCount = 10}}' +
+    '{{#if peopleCount}}' +
+        'Expected people count: {{peopleCount}}' +
+        '\n' +
+        'Real people:' +
+        '{{#each people}}' +
+            ' {{+name}}' +
+        '{{/each}}' +
+    '{{/if}}';
 
 var context = {
     people: [
@@ -42,8 +42,5 @@ yate.render(template, context);
 
 Produce:
 `Expected people count: 10
-
-Real people:
-Homer
-Bart`
+ Real people: Homer Bart`
 ```

@@ -9,7 +9,7 @@ Now node.js is only supported
 - integer variable declaration with initialization `{{@count=10}}`
 - insertion value of variable `{{count}}`
 - condition `{{#if count}}Hello{{/if}}`
-- array of object iteration `{{#each people}} {{name}} {{/each}}`
+- array of object iteration `{{#each people}} {{+name}} {{/each}}`
 
 ## Usage
 
@@ -23,8 +23,8 @@ var template =
         
         Real people:
         {{#each people}} +
-            {{name}}
-        {{/each}} +
+            {{+name}}
+        {{/each}}
     {{/if}}`;
 
 var context = {

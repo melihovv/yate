@@ -3,7 +3,13 @@
 
 Yet Another Template Engine
 
-##Usage
+## Features
+- integer variable declaration with initialization `{{@count=10}}`
+- insertion value of variable `{{count}}`
+- condition `{{#if count}}Hello{{/if}}`
+- array of object iteration `{{#each people}} {{name}} {{/each}}`
+
+## Usage
 
 ```
 var template =

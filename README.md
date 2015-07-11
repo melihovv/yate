@@ -3,6 +3,8 @@
 
 Yet Another Template Engine
 
+Now node.js is only supported
+
 ## Features
 - integer variable declaration with initialization `{{@count=10}}`
 - insertion value of variable `{{count}}`
@@ -12,6 +14,8 @@ Yet Another Template Engine
 ## Usage
 
 ```
+var yate = require('yate');
+
 var template =
     `{{peopleCount = 10}} +
     {{#if peopleCount}} +

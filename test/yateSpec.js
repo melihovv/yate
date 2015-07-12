@@ -33,25 +33,11 @@ describe('Yate', function () {
         });
 
         it('must throw exception when insert not existing variable', function () {
-            var template = '{{number}}';
-            var number = 0;
-            try {
-                render(template, {word: 'word'});
-            } catch (e) {
-                ++number;
-            }
-            number.must.equal(1);
+            isThrows(render, '{{number}}', {word: 'word'}).must.be.truthy();
         });
 
         it('must throw exception when insert non primitive type', function () {
-            var template = '{{type}}';
-            var number = 0;
-            try {
-                render(template, {type: ['word']});
-            } catch (e) {
-                ++number;
-            }
-            number.must.equal(1);
+            isThrows(render, '{{type}}', {type: ['word']}).must.be.truthy();
         });
     });
 
@@ -90,14 +76,7 @@ describe('Yate', function () {
         });
 
         it('must throw exception when variable is undefined', function () {
-            var template = '{{type}}';
-            var number = 0;
-            try {
-                render(template, {});
-            } catch (e) {
-                ++number;
-            }
-            number.must.equal(1);
+            isThrows(render, '{{type}}', {}).must.be.truthy();
         });
 
         describe('nested elements', function () {
@@ -209,80 +188,40 @@ describe('Yate', function () {
         });
 
         it('must throw exception when object is undefined', function () {
-            var template = '{{#each people}}{{/each}}';
-            var context = {};
-            var number = 0;
-            try {
-                render(template, context).must.throw();
-            } catch (e) {
-                ++number;
-            }
-            number.must.equal(1);
+            isThrows(render, '{{#each people}}{{/each}}', {}).must.be.truthy();
         });
 
         it('must throw exception when object property is undefined', function () {
-            var template = '{{#each people}}{{+lastname}}{{/each}}';
-            var context = {
+            isThrows(render, '{{#each people}}{{+lastname}}{{/each}}', {
                 people: [
                     {name: 'Homer'},
                     {name: 'Bart'}
                 ]
-            };
-            var number = 0;
-            try {
-                render(template, context).must.throw();
-            } catch (e) {
-                ++number;
-            }
-            number.must.equal(1);
+            }).must.be.truthy();
         });
 
         it('must throw exception when object property is not primitive', function () {
-            var template = '{{#each people}}{{+lastname}}{{/each}}';
-            var context = {
+            isThrows(render, '{{#each people}}{{+lastname}}{{/each}}', {
                 people: [
                     {name: ['Homer']},
                     {name: 'Bart'}
                 ]
-            };
-            var number = 0;
-            try {
-                render(template, context).must.throw();
-            } catch (e) {
-                ++number;
-            }
-            number.must.equal(1);
+            }).must.be.truthy();
         });
 
         it('must throw exception when object is not an object', function () {
-            var template = '{{#each people}}{{+lastname}}{{/each}}';
-            var context = {
+            isThrows(render, '{{#each people}}{{+lastname}}{{/each}}', {
                 people: [
                     ['Homer'],
                     {name: 'Bart'}
                 ]
-            };
-            var number = 0;
-            try {
-                render(template, context).must.throw();
-            } catch (e) {
-                ++number;
-            }
-            number.must.equal(1);
+            }).must.be.truthy();
         });
 
         it('must throw exception when array is not an array', function () {
-            var template = '{{#each people}}{{+lastname}}{{/each}}';
-            var context = {
+            isThrows(render, '{{#each people}}{{+lastname}}{{/each}}', {
                 people: ''
-            };
-            var number = 0;
-            try {
-                render(template, context).must.throw();
-            } catch (e) {
-                ++number;
-            }
-            number.must.equal(1);
+            }).must.be.truthy();
         });
 
         it('must allow nested inserting value of variable', function () {
@@ -381,3 +320,12 @@ describe('Yate', function () {
     });
 })
 ;
+
+function isThrows(func, arg1, arg2) {
+    try {
+        func(arg1, arg2);
+    } catch (e) {
+        return true;
+    }
+    return false;
+}

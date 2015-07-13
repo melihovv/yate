@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b02004d8-2a7d-4f00-b6ce-f2c529092af6" name="Default" comment="">
+    <list default="true" id="b02004d8-2a7d-4f00-b6ce-f2c529092af6" name="Default" comment="Deleted repeated test">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/yate.js" afterPath="$PROJECT_DIR$/lib/yate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/yateSpec.js" afterPath="$PROJECT_DIR$/test/yateSpec.js" />
     </list>
     <ignored path="yate.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,21 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="yateSpec.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="yateSpec.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/yateSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="yate.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/yate.js">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.22014388">
-              <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+              <caret line="40" column="37" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -61,8 +51,8 @@
         <option value="$PROJECT_DIR$/lib/parser.pegjs" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/test/yateSpec.js" />
         <option value="$PROJECT_DIR$/lib/yate.js" />
+        <option value="$PROJECT_DIR$/test/yateSpec.js" />
       </list>
     </option>
   </component>
@@ -334,7 +324,13 @@
       <option name="project" value="LOCAL" />
       <updated>1436779279865</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Updated jsdoc">
+      <created>1436779365755</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1436779365755</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -381,7 +377,8 @@
     <MESSAGE value="Finished" />
     <MESSAGE value="Updated throw assertion" />
     <MESSAGE value="Added additional tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added additional tests" />
+    <MESSAGE value="Updated jsdoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated jsdoc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -691,18 +688,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/yateSpec.js">
+    <entry file="file://$PROJECT_DIR$/lib/yate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.19568345">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/yate.js">
+    <entry file="file://$PROJECT_DIR$/test/yateSpec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22014388">
-          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+          <caret line="40" column="37" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="79" />
           <folding />
         </state>
       </provider>

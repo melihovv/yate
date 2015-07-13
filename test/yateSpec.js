@@ -43,11 +43,6 @@ describe('Yate', function () {
             isThrows(render, template).must.be.truthy();
         });
 
-        it('must throw an error with not valid template: not integer assignment', function () {
-            var template = '{{@count=818.8}}';
-            isThrows(render, template).must.be.truthy();
-        });
-
         it('must throw an error with not valid template: there is no space after if/each', function () {
             var template = '{{#ifcond}}{{/if}}';
             isThrows(render, template).must.be.truthy();

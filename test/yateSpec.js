@@ -19,6 +19,52 @@ describe('Yate', function () {
         demand(context['count']).be.undefined();
     });
 
+    it('must not throw exception when no arguments passed', function () {
+        if (isThrows(render) === false) {
+            true.must.be.truthy();
+        } else {
+            false.must.be.truthy();
+        }
+    });
+
+    describe('not valid templates', function () {
+        it('must throw an error with not valid template: disbalance of braces', function () {
+            var template = '{{number}';
+            isThrows(render, template).must.be.truthy();
+        });
+
+        it('must throw an error with not valid template: not valid id', function () {
+            var template = '{{numbe,r}}';
+            isThrows(render, template).must.be.truthy();
+        });
+
+        it('must throw an error with not valid template: not integer assignment', function () {
+            var template = '{{@count=818.8}}';
+            isThrows(render, template).must.be.truthy();
+        });
+
+        it('must throw an error with not valid template: not integer assignment', function () {
+            var template = '{{@count=818.8}}';
+            isThrows(render, template).must.be.truthy();
+        });
+
+        it('must throw an error with not valid template: there is no space after if/each', function () {
+            var template = '{{#ifcond}}{{/if}}';
+            isThrows(render, template).must.be.truthy();
+        });
+
+        it('must throw an error with not valid template: there is no closing block for if/each', function () {
+            var template = '{{#each people}}';
+            isThrows(render, template).must.be.truthy();
+        });
+    });
+
+    it('must hide prototype and constructor', function () {
+        var demand = require('must');
+        demand(render.prototype).be.null();
+        demand(render.constructor).be.null();
+    });
+
     describe('insertion value of variable', function () {
         it('must insert number', function () {
             var expected = '10';
@@ -262,7 +308,7 @@ describe('Yate', function () {
             render(template, context).must.equal(expected);
         });
 
-        it('must allow nested loops', function () {
+        it('must allow nested loop', function () {
             var template = '{{#each people}}{{+name}}{{#each fruits}}{{+name}}{{/each}}{{/each}}';
             var context = {
                 people: [
@@ -275,6 +321,23 @@ describe('Yate', function () {
                 ]
             };
             var expected = 'HomerBananaAppleBartBananaApple';
+            render(template, context).must.equal(expected);
+        });
+
+        it('must allow nested condition within nested loop', function () {
+            var template = '{{#each people}}{{+name}}{{#each fruits}}{{#if cond}}{{cond}}{{/if}}{{/each}}{{/each}}';
+            var context = {
+                people: [
+                    {name: 'Homer'},
+                    {name: 'Bart'}
+                ],
+                fruits: [
+                    {name: 'Banana'},
+                    {name: 'Apple'}
+                ],
+                cond: true
+            };
+            var expected = 'HomertruetrueBarttruetrue';
             render(template, context).must.equal(expected);
         });
     });
@@ -318,9 +381,15 @@ describe('Yate', function () {
             render(template, context).must.equal(expected);
         });
     });
-})
-;
+});
 
+/**
+ * Check if function throws an error when it is called with passed args.
+ * @param {function} func
+ * @param {string} [arg1]
+ * @param {string} [arg2]
+ * @returns {boolean}
+ */
 function isThrows(func, arg1, arg2) {
     try {
         func(arg1, arg2);

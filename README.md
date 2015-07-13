@@ -13,7 +13,7 @@ Now node.js is only supported
 
 ## Usage
 
-```
+```javascript
 var yate = require('yate');
 
 var template =
@@ -39,7 +39,8 @@ var context = {
 };
 
 yate.render(template, context);
-
+```
+```
 Produce:
 `Expected people count: 10
  Real people: Homer Bart`

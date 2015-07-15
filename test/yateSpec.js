@@ -179,6 +179,45 @@ describe('Yate', function () {
         });
     });
 
+    describe('if_line', function () {
+        it('must render template with condition and add new line after its body', function () {
+            var template = '{{#if_line cond}}hello{{/if_line}}';
+            var context = {
+                cond: true
+            };
+            var expected = 'hello\n';
+            render(template, context).must.equal(expected);
+        });
+    });
+
+    describe('each_line', function () {
+        describe('must render template with each loop and add new line after its body', function () {
+            it('body is instructions', function () {
+                var template = '{{#each_line people}}{{+name}}{{/each_line}}';
+                var context = {
+                    people: [
+                        {name: 'Homer'},
+                        {name: 'Bart'}
+                    ]
+                };
+                var expected = 'Homer\nBart';
+                render(template, context).must.equal(expected);
+            });
+
+            it('body is text', function () {
+                var template = '{{#each_line people}}hello{{/each_line}}';
+                var context = {
+                    people: [
+                        {name: 'Homer'},
+                        {name: 'Bart'}
+                    ]
+                };
+                var expected = 'hello\nhello';
+                render(template, context).must.equal(expected);
+            });
+        });
+    });
+
     describe('each loop', function () {
         it('must render template with each loop: one property', function () {
             var template = '{{#each people}}{{+name}}{{/each}}';

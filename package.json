@@ -4,8 +4,7 @@
   "description": "Yet Another Template Engine",
   "main": "app/yate.js",
   "scripts": {
-    "test": "bash ./test.sh",
-    "test2": "npm run lint && npm run cover-cobertura && npm run diff-cover",
+    "test": "npm run lint && npm run cover",
     "lint": "jshint . && jscs -c .jscs.js .",
     "unit-test": "mocha",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec",

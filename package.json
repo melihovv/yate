@@ -10,8 +10,8 @@
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
     "cover-cobertura": "istanbul cover --report cobertura node_modules/mocha/bin/_mocha -- -R spec",
     "diff-cover": "diff-cover coverage/cobertura-coverage.xml --fail-under=90",
-    "start": "node app/index.js",
-    "jsdoc": " jsdoc -d ./docs/ -r ./app/",
+    "start": "node lib/yate.js",
+    "jsdoc": " jsdoc -d ./docs/ -r ./lib/",
     "complexity": "plato -r -d metrics -l .jshintrc -t \"Site Scrapper\" app &&  cr -c .complexrc app/"
   },
   "pre-commit": [

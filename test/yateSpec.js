@@ -58,6 +58,12 @@ describe('Yate', function () {
             demand(render.prototype).be.null();
             demand(render.constructor).be.null();
         });
+
+        it('must return undefined if first parameter is not a string', function () {
+            var template = require('fs').readFileSync('./lib/yate.js');
+            var demand = require('must');
+            demand(render(template)).be.undefined();
+        });
     });
 
     describe('text', function () {

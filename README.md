@@ -14,7 +14,7 @@ Now node.js is only supported
 ## Usage
 
 ```javascript
-var render = require('yate');
+var compile = require('yate');
 
 var template =
     '{{@peopleCount = 10}}' +
@@ -27,6 +27,8 @@ var template =
         '{{/each}}' +
     '{{/if}}';
 
+var render = compile(template);
+
 var context = {
     people: [
         {
@@ -38,7 +40,7 @@ var context = {
     ]
 };
 
-console.log(render(template, context));
+console.log(render(context));
 ```
 ```
 Produce:

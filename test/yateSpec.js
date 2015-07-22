@@ -1,34 +1,36 @@
 describe('Yate', function () {
     'use strict';
 
-    var render = require('../lib/yate');
+    var compile = require('../lib/yate');
+
+    function render(template, context) {
+        return compile(template)(context);
+    }
 
     describe('not valid templates', function () {
-        var demand = require('must');
-
         it('must throw an error with not valid template: disbalance of braces', function () {
             var template = '{{number}';
-            demand(render(template)).be.undefined();
+            isThrows(render, template).must.be.truthy();
         });
 
         it('must throw an error with not valid template: not valid id', function () {
             var template = '{{numbe,r}}';
-            demand(render(template)).be.undefined();
+            isThrows(render, template).must.be.truthy();
         });
 
         it('must throw an error with not valid template: not integer assignment', function () {
             var template = '{{@count=818.8}}';
-            demand(render(template)).be.undefined();
+            isThrows(render, template).must.be.truthy();
         });
 
         it('must throw an error with not valid template: there is no space after if/each', function () {
             var template = '{{#ifcond}}{{/if}}';
-            demand(render(template)).be.undefined();
+            isThrows(render, template).must.be.truthy();
         });
 
         it('must throw an error with not valid template: there is no closing block for if/each', function () {
             var template = '{{#each people}}';
-            demand(render(template)).be.undefined();
+            isThrows(render, template).must.be.truthy();
         });
     });
 
@@ -45,24 +47,19 @@ describe('Yate', function () {
             demand(context['count']).be.undefined();
         });
 
-        it('must not throw exception when no arguments passed', function () {
-            if (isThrows(render) === false) {
-                true.must.be.truthy();
-            } else {
-                false.must.be.truthy();
-            }
+        it('must throw exception when no arguments passed', function () {
+            isThrows(render).must.be.truthy();
         });
 
         it('must hide prototype and constructor', function () {
             var demand = require('must');
-            demand(render.prototype).be.null();
-            demand(render.constructor).be.null();
+            demand(compile.prototype).be.null();
+            demand(compile.constructor).be.null();
         });
 
-        it('must return undefined if first parameter is not a string', function () {
+        it('must throw exception if first parameter is not a string', function () {
             var template = require('fs').readFileSync('./lib/yate.js');
-            var demand = require('must');
-            demand(render(template)).be.undefined();
+            isThrows(render, template).must.be.truthy();
         });
     });
 

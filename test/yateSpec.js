@@ -4,29 +4,31 @@ describe('Yate', function () {
     var render = require('../lib/yate');
 
     describe('not valid templates', function () {
+        var demand = require('must');
+
         it('must throw an error with not valid template: disbalance of braces', function () {
             var template = '{{number}';
-            isThrows(render, template).must.be.truthy();
+            demand(render(template)).be.undefined();
         });
 
         it('must throw an error with not valid template: not valid id', function () {
             var template = '{{numbe,r}}';
-            isThrows(render, template).must.be.truthy();
+            demand(render(template)).be.undefined();
         });
 
         it('must throw an error with not valid template: not integer assignment', function () {
             var template = '{{@count=818.8}}';
-            isThrows(render, template).must.be.truthy();
+            demand(render(template)).be.undefined();
         });
 
         it('must throw an error with not valid template: there is no space after if/each', function () {
             var template = '{{#ifcond}}{{/if}}';
-            isThrows(render, template).must.be.truthy();
+            demand(render(template)).be.undefined();
         });
 
         it('must throw an error with not valid template: there is no closing block for if/each', function () {
             var template = '{{#each people}}';
-            isThrows(render, template).must.be.truthy();
+            demand(render(template)).be.undefined();
         });
     });
 

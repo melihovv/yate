@@ -301,17 +301,26 @@ describe('Yate', function () {
                 render(template, context).must.equal(expected);
             });
 
-            it('must allow nested condition', function () {
+            describe('must allow nested condition', function () {
                 var template = '{{#each people}}{{#if cond}}hello{{/if}}{{/each}}';
                 var context = {
                     people: [
                         {name: 'Homer'},
                         {name: 'Bart'}
-                    ],
-                    cond: true
+                    ]
                 };
-                var expected = 'hellohello';
-                render(template, context).must.equal(expected);
+
+                it('falsy condition', function () {
+                    context.cond = false;
+                    var expected = '';
+                    render(template, context).must.equal(expected);
+                });
+
+                it('truthy condition', function () {
+                    context.cond = true;
+                    var expected = 'hellohello';
+                    render(template, context).must.equal(expected);
+                });
             });
 
             it('must allow nested loop', function () {
@@ -344,6 +353,18 @@ describe('Yate', function () {
                     cond: true
                 };
                 var expected = 'HomertruetrueBarttruetrue';
+                render(template, context).must.equal(expected);
+            });
+
+            it('must allow nested condition with object property as conditional variable', function () {
+                var template = '{{#each people}}{{#if cond}}{{cond}}{{/if}}{{/each}}';
+                var context = {
+                    people: [
+                        {name: 'Homer', cond: false},
+                        {name: 'Bart', cond: true}
+                    ]
+                };
+                var expected = 'true';
                 render(template, context).must.equal(expected);
             });
         });

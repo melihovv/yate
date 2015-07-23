@@ -367,6 +367,30 @@ describe('Yate', function () {
                 var expected = 'true';
                 render(template, context).must.equal(expected);
             });
+
+            it('must allow array as object property', function () {
+                var template = '{{#each people}}{{#each fullname}}{{value}} {{/each}}\n{{/each}}';
+                var context = {
+                    people: [
+                        {
+                            fullname: [
+                                {value: 'Homer'},
+                                {value: 'Jay'},
+                                {value: 'Simpson'}
+                            ]
+                        },
+                        {
+                            fullname: [
+                                {value: 'Bartholomew'},
+                                {value: 'Jo-Jo'},
+                                {value: 'Simpson'}
+                            ]
+                        }
+                    ]
+                };
+                var expected = 'Homer Jay Simpson \nBartholomew Jo-Jo Simpson \n';
+                render(template, context).must.equal(expected);
+            });
         });
 
         describe('errors', function () {

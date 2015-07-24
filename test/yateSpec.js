@@ -391,6 +391,30 @@ describe('Yate', function () {
                 var expected = 'Homer Jay Simpson \nBartholomew Jo-Jo Simpson \n';
                 render(template, context).must.equal(expected);
             });
+
+            it('must insert values auto converted to false properly', function () {
+                var template = '{{#each people}}{{#each fullname}}{{value}} {{/each}}\n{{/each}}';
+                var context = {
+                    people: [
+                        {
+                            fullname: [
+                                {value: 0},
+                                {value: ''},
+                                {value: 'Simpson'}
+                            ]
+                        },
+                        {
+                            fullname: [
+                                {value: 'Bartholomew'},
+                                {value: 'Jo-Jo'},
+                                {value: 'Simpson'}
+                            ]
+                        }
+                    ]
+                };
+                var expected = '0  Simpson \nBartholomew Jo-Jo Simpson \n';
+                render(template, context).must.equal(expected);
+            });
         });
 
         describe('errors', function () {
